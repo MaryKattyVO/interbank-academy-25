@@ -1,0 +1,16 @@
+{
+  "name": "interbank-cli",
+  "version": "1.0.0",
+  "description": "CLI para procesar transacciones bancarias",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "csv-parser": "^3.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}

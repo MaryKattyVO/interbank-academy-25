@@ -1,66 +1,52 @@
-# Reto Técnico: Procesamiento de Transacciones Bancarias (CLI)
+# Interbank CLI - Procesamiento de Transacciones Bancarias
 
-## Objetivo:
+## Introducción
 
-Desarrolla una aplicación de línea de comandos (CLI) que procese un archivo CSV con transacciones bancarias y genere un reporte que incluya:
+Aplicación CLI en Node.js que lee un archivo CSV con transacciones bancarias, calcula el balance final, identifica la transacción más grande y cuenta los tipos de transacción.
 
-- **Balance Final:**  
-  Suma de los montos de las transacciones de tipo "Crédito" menos la suma de los montos de las transacciones de tipo "Débito".
+## Instrucciones de Ejecución
 
-- **Transacción de Mayor Monto:**  
-  Identificar el ID y el monto de la transacción con el valor más alto.
-
-- **Conteo de Transacciones:**  
-  Número total de transacciones para cada tipo ("Crédito" y "Débito").
-
----
-
-## Instrucciones
-
-1. **Repositorio Base:**  
-   Clona o haz un fork del repositorio base disponible en:  
-   `https://github.com/codeableorg/interbank-academy-25`
-
-2. **Entrada de Datos:**  
-   La aplicación deberá leer un archivo CSV. Ejemplo de contenido:
-
+1. Clonar el repositorio.
+2. Tener instalado Node.js v14 o superior
+3. Instalar las dependencias:
+   ```bash
+   npm install
    ```
-   id,tipo,monto
-   1,Crédito,100.00
-   2,Débito,50.00
-   3,Crédito,200.00
-   4,Débito,75.00
-   5,Crédito,150.00
+5. Ejecutar la aplicación con:
+   ```bash
+   node index.js
+   ```
+5. Ejecutar pruebas unitarias:
+   ```bash
+   npm test
    ```
 
-3. **Salida del Programa:**  
-   La aplicación debe mostrar el reporte final en la terminal.  
-   Ejemplo de salida:
+## Enfoque y Solución
 
-   ```
-   Reporte de Transacciones
-   ---------------------------------------------
-   Balance Final: 325.00
-   Transacción de Mayor Monto: ID 3 - 200.00
-   Conteo de Transacciones: Crédito: 3 Débito: 2
-   ```
+- Usé `csv-parser` para leer el archivo línea por línea.
+- Sumar y restar montos según el tipo de transacción.
+- Seguir el ID de la transacción con el monto más alto.
+- Contar transacciones por tipo usando un objeto.
 
-4. **Lenguaje de Programación:**  
-   Utiliza el lenguaje de tu preferencia. Opciones recomendadas:
+## Estructura del Proyecto
 
-   - Python
-   - Java
-   - C#
-   - JavaScript (Node.js)
+```
+interbank-cli/
+├── data.csv                # Archivo de entrada con transacciones bancarias
+├── index.js                # Archivo principal, ejecuta la CLI y genera el reporte
+├── processor.js            # Módulo que contiene la lógica para procesar transacciones
+├── processor.test.js       # Archivo con pruebas unitarias usando Jest
+├── package.json            # Configuración del proyecto Node.js y dependencias
+├── README.md               # Documentación del proyecto y cómo ejecutarlo
+└── .gitignore              # Ignora node_modules y otros archivos no deseados
+```
 
-5. **README del Proyecto:**  
-   Incluye un archivo `README.md` con la siguiente estructura:
+## Resultado de Ejemplo
 
-   - **Introducción:** Breve descripción del reto y su propósito.
-   - **Instrucciones de Ejecución:** Cómo instalar dependencias y ejecutar la aplicación.
-   - **Enfoque y Solución:** Lógica implementada y decisiones de diseño.
-   - **Estructura del Proyecto:** Archivos y carpetas principales.
-
-6. **Documentación y Calidad del Código:**
-   - Código bien documentado y fácil de leer.
-   - Comentarios explicando pasos clave y lógica del programa.
+```
+Reporte de Transacciones
+---------------------------------------------
+Balance Final: 325.00
+Transacción de Mayor Monto: ID 3 - 200.00
+Conteo de Transacciones: Crédito: 3 Débito: 2
+```
